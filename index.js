@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registrationForm');
     const entriesTable = document.getElementById('entriesTable').getElementsByTagName('tbody')[0];
@@ -33,12 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('entries', JSON.stringify(entries));
 
         // Add entry to the table
-        const newRow = entriesTable.insertRow();
-        newRow.insertCell().textContent = name;
-        newRow.insertCell().textContent = email;
-        newRow.insertCell().textContent = password;
-        newRow.insertCell().textContent = dob.toISOString().split('T')[0];
-        newRow.insertCell().textContent = acceptedTerms ? 'Yes' : 'No';
+        addEntryToTable(name, email, password, dob.toISOString().split('T')[0], acceptedTerms ? 'Yes' : 'No');
 
         // Clear the form
         form.reset();
@@ -48,12 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadEntries() {
         const entries = JSON.parse(localStorage.getItem('entries')) || [];
         entries.forEach(entry => {
-            const newRow = entriesTable.insertRow();
-            newRow.insertCell().textContent = entry.name;
-            newRow.insertCell().textContent = entry.email;
-            newRow.insertCell().textContent = entry.password;
-            newRow.insertCell().textContent = entry.dob;
-            newRow.insertCell().textContent = entry.acceptedTerms ? 'Yes' : 'No';
+            addEntryToTable(entry.name, entry.email, entry.password, entry.dob, entry.acceptedTerms ? 'Yes' : 'No');
         });
+    }
+
+    function addEntryToTable(name, email, password, dob, acceptedTerms) {
+        const newRow = entriesTable.insertRow();
+        newRow.insertCell().textContent = name;
+        newRow.insertCell().textContent = email;
+        newRow.insertCell().textContent = password;
+        newRow.insertCell().textContent = dob;
+        newRow.insertCell().textContent = acceptedTerms;
     }
 });

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  <script src="index.js"></script>
+    <title>Registration Form</title>
+    <script src="index.js" defer></script>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -36,26 +36,25 @@
 <body style="width: 20%; margin-left: 35%; margin-top: 4%;">
     <form id="registrationForm" style="background-color: rgb(243, 240, 240); border-radius: 8px; padding: 20px; padding-left: 30px; width: 310px;">
         <h2 style="text-align: center;">Registration Form</h2>
-
         <div style="display: flex; flex-direction: column;">
             <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
                 <label for="name">Name</label>
-                <input id="name" type="text">
+                <input id="name" type="text" required>
             </div>
             <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
                 <label for="email">Email</label>
-                <input id="email" type="email">
+                <input id="email" type="email" required>
             </div>
             <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
                 <label for="password">Password</label>
-                <input id="password" type="password">
+                <input id="password" type="password" required>
             </div>
             <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
                 <label for="dob">Date of Birth</label>
-                <input id="dob" type="date">
+                <input id="dob" type="date" required>
             </div>
             <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <input id="terms" type="checkbox">
+                <input id="terms" type="checkbox" required>
                 <label for="terms">Accept Terms & Conditions</label>
             </div>
             <button style="width: 120px; padding: 9px; font-size: 18px; border-radius: 3px; background-color: #2fd454; color: white; border: none;" type="submit">Submit</button>
@@ -63,7 +62,7 @@
     </form>
 
     <br>
-    <form id="entriesForm" style="background-color: rgb(243, 240, 240); border-radius: 8px; margin-left: -42%; padding: 20px; padding-left: 30px; width: 580px;">
+    <form id="entriesForm" style="background-color: rgb(243, 240, 240); border-radius: 8px; padding: 20px; padding-left: 30px; width: 580px; margin-left: auto; margin-right: auto;">
         <h2>Entries</h2>
         <table id="entriesTable">
             <thead>
@@ -76,10 +75,9 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Entries will be dynamically added here -->
+                
             </tbody>
         </table>
     </form>
-
 </body>
 </html>
