@@ -25,13 +25,22 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Create an entry object
+        const entry = {
+            name,
+            email,
+            password,
+            dob: dob.toISOString().split('T')[0], // Format date as YYYY-MM-DD
+            acceptedTerms
+        };
+
         // Add entry to local storage
         const entries = JSON.parse(localStorage.getItem('entries')) || [];
-        entries.push({ name, email, password, dob: dob.toISOString().split('T')[0], acceptedTerms });
+        entries.push(entry);
         localStorage.setItem('entries', JSON.stringify(entries));
 
         // Add entry to the table
-        addEntryToTable(name, email, password, dob.toISOString().split('T')[0], acceptedTerms ? 'Yes' : 'No');
+        addEntryToTable(entry);
 
         // Clear the form
         form.reset();
@@ -41,16 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadEntries() {
         const entries = JSON.parse(localStorage.getItem('entries')) || [];
         entries.forEach(entry => {
-            addEntryToTable(entry.name, entry.email, entry.password, entry.dob, entry.acceptedTerms ? 'Yes' : 'No');
+            addEntryToTable(entry);
         });
     }
 
-    function addEntryToTable(name, email, password, dob, acceptedTerms) {
+    function addEntryToTable(entry) {
         const newRow = entriesTable.insertRow();
-        newRow.insertCell().textContent = name;
-        newRow.insertCell().textContent = email;
-        newRow.insertCell().textContent = password;
-        newRow.insertCell().textContent = dob;
-        newRow.insertCell().textContent = acceptedTerms;
+        newRow.insertCell().textContent = entry.name;
+        newRow.insertCell().textContent = entry.email;
+        newRow.insertCell().textContent = entry.password;
+        newRow.insertCell().textContent = entry.dob;
+        newRow.insertCell().textContent = entry.acceptedTerms ? 'Yes' : 'No';
     }
 });
