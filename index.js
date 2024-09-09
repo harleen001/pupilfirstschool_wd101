@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registrationForm');
     const entriesTable = document.getElementById('entriesTable').getElementsByTagName('tbody')[0];
 
-    // Load saved entries from localStorage
+    // Load saved entries from localStorage and display them in the table
     loadEntries();
 
     form.addEventListener('submit', (event) => {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.push(entry);
         localStorage.setItem('entries', JSON.stringify(entries));
 
-        // Add entry to the table
+        // Add entry to the table immediately
         addEntryToTable(entry);
 
         // Clear the form
